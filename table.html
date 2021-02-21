@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>JavaScript - read JSON from URL</title>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+
+<style>
+    input,
+    p,
+    #tab td,
+    #tab th {
+        font-size: 16px;
+    }
+    
+    #tab,
+    #tab td,
+    #tab th {
+        border: 1px solid #DDD;
+        border-collapse: collapse;
+        padding: 2px 3px;
+        text-align: center;
+        margin: 0 auto
+    }
+    
+    #tab th {
+        font-weight: 700
+    }
+</style>
+<p id="showData"></p>
+<script>
+    var jsonData;
+    $.getJSON('https://raw.githubusercontent.com/lantip/monitoring-tweet-vaksin/master/result.json', function(data) {
+
+        var e = data;
+        console.log(e);
+        for (e, o = [], r = 0; r < e.length; r++)
+            for (var t in e[r]) - 1 === o.indexOf(t) && o.push(t);
+
+        var n = document.createElement("table"),
+            a = n.insertRow(-1);
+        for (r = 0; r < o.length; r++) {
+            var i = document.createElement("th");
+            i.innerHTML = o[r], a.appendChild(i)
+        }
+        for (r = 0; r < e.length; r++) {
+            a = n.insertRow(-1);
+            for (var c = 0; c < o.length; c++) {
+                a.insertCell(-1).innerHTML = e[r][o[c]]
+            }
+        }
+        var l = document.getElementById("showData");
+        n.setAttribute('id', 'tab');
+        l.innerHTML = "", l.appendChild(n)
+    });
+</script>
+</div>
